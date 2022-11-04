@@ -15,6 +15,7 @@ const brokenBridge = new Image();
 const enemyBat = new Image();
 const enemySlime = new Image();
 const battleBattleground = new Image();
+const bottomGround = new Image();
 var contagem = 0;
 /**
  * 
@@ -24,23 +25,24 @@ var contagem = 0;
  *  4 mansion
  *  5 dark castle
  *  6 tower
+ *  8 bottom-edge
  */
 let map = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,1,1,1,1,1,1,1,1,0,0,0,0],
-    [0,0,0,2,2,2,3,1,2,1,0,0,0,0],
-    [0,0,0,1,2,1,1,1,2,3,1,0,0,0],
-    [0,0,0,1,1,2,3,1,2,1,1,0,0,0],
-    [0,0,0,1,1,4,2,1,6,1,1,0,0,0],
-    [0,0,0,0,1,2,5,2,1,1,1,0,0,0],
+    [0,0,1,1,1,1,1,1,1,8,0,0,0,0],
+    [0,0,0,2,2,2,3,1,2,8,0,0,0,0],
+    [0,0,0,1,2,1,1,1,2,3,8,0,0,0],
+    [0,0,0,1,1,2,3,1,2,1,8,0,0,0],
+    [0,0,0,1,1,4,2,1,6,1,8,0,0,0],
+    [0,0,0,0,1,2,5,2,1,1,8,0,0,0],
     [0,0,0,0,0,1,2,1,1,0,0,0,0,0],
     [0,0,0,0,0,0,2,1,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,7,0,0,0,0,0,0],
     [0,1,1,1,1,1,0,1,0,0,1,1,0,0],
-    [0,1,1,1,3,2,1,1,1,1,1,1,0,0],
+    [0,1,1,1,3,2,1,1,1,1,1,8,0,0],
     [0,1,1,1,2,2,1,6,1,1,1,0,0,0],
-    [0,0,1,1,1,2,2,1,3,1,1,1,1,0],
-    [0,0,1,1,1,2,2,2,2,1,6,1,1,0]
+    [0,0,1,1,1,2,2,1,3,1,1,1,8,0],
+    [0,0,1,1,1,2,2,2,2,1,6,1,8,0]
 ]
 
 playerImg.src ="heroic_01.png";
@@ -55,6 +57,7 @@ brokenBridge.src="sea100x50BronkenBridge.png";
 enemyBat.src = 'bat.png';
 enemySlime.src="slime.png";
 battleBattleground.src="backgroundTeste.jpg";
+bottomGround.src="groundEdge100x50Bottom.png";
 
 const player = {
     X: 500,
@@ -115,6 +118,9 @@ function drawMap(){
             }
             else if( col == 7 ){
                 ctx.drawImage(brokenBridge, 100 * i, 50 * vl)
+            }
+            else if( col == 8 ){
+                ctx.drawImage(bottomGround, 100 * i, 50 * vl)
             }
         })
     })
