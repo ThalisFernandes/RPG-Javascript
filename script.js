@@ -1,9 +1,9 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = 600;
+canvas.height = 600;
 var emCombat = false;
-var menuGame = true;
+var menuGame = false;
 const playerImg = new Image();
 const world = new Image();
 const groundWorld = new Image();
@@ -114,14 +114,33 @@ edgeBottom90.src="groundEdge100x50EdgeBottom.png";
 leftEdge.src="groundEdge100x50Left.png";
 leftEdge90.src="groundEdge100x50TopRight.png";
 menuImage.src="blackHole.png";
+const cam  = {
+    x:1000,
+    y:0,
+    width: canvas.width,
+    height: canvas.height,
+    leftCam: ()=>{
+        return this.x + (this.width * 0.25)
+    },
+    rightCam: ()=>{
+        return this.x + (this.width * 0.75)
+    },
+    topCam: ()=>{
+        return this.y + (this.height * 0.25)
+    },
+    bottomCam: ()=>{
+        return this.y + (this.height * 0.75)
+    }
+};
+
 const player = {
-    X: 700,
-    Y:300,
+    X: 0,
+    Y:0,
     width: 33,
     height: 32,
     walking: false,
     frameX: 0,
-    speed: 7,
+    speed: 4,
     frameY: 0,
     hp: 50,
     atck: 11,
@@ -164,7 +183,8 @@ function menuItens(){
     ctx.fillText('Aperte [Enter] para começar o Jogo', canvas.width/2 - 200, 550);
 }
 function drawMap(){
-    
+    ctx.save();
+    ctx.translate(-cam.x, -cam.y);
     ctx.fillStyle= "#5B5D5D";
     ctx.fillRect(0,0, canvas.width, canvas.height);
     map.forEach((row,i)=>{
@@ -210,10 +230,23 @@ function drawMap(){
             }
         })
     })
+    ctx.restore();
     
 }
 function drawPlayer(){
     ctx.drawImage(playerImg, player.width * player.frameX, player.height * player.frameY, player.width, player.height, player.X, player.Y, player.width, player.height);
+}
+function moverCamera(){
+    if (player.X < cam.leftCam()){
+        cam.x = player.X - (cam.width * 0.25);
+    } else if(player.X + player.width > cam.rightCam()){
+        cam.x = player.X + player.width - (cam.width * 0.75)
+    } else if (player.Y < cam.topCam()){
+        cam.x = player.X - (cam.width * 0.25);
+    } else if(player.X + player.width > cam.rightCam()){
+        cam.x = player.X + player.width - (cam.width * 0.75)
+    }
+
 }
 
 function battle(){
@@ -225,6 +258,7 @@ function draw(){
     drawMap();
     movimento();
     drawPlayer();
+    moverCamera();
 }
 
 // setInterval(()=> {
@@ -254,7 +288,6 @@ function movimento(){
 
 window.addEventListener('keyup', e =>  player.walking = false)
 window.addEventListener('keydown', (e)=>{
-    console.log(e.keyCode);
     if(e.keyCode === 37) {
         player.X -= player.speed
         player.frameY = 1
