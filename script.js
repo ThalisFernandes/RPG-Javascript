@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = 600;
 canvas.height = 600;
 var emCombat = false;
-var menuGame = false;
+var menuGame = true;
 const playerImg = new Image();
 const world = new Image();
 const groundWorld = new Image();
@@ -115,32 +115,32 @@ leftEdge.src="groundEdge100x50Left.png";
 leftEdge90.src="groundEdge100x50TopRight.png";
 menuImage.src="blackHole.png";
 const cam  = {
-    x:1000,
+    x:0,
     y:0,
     width: canvas.width,
     height: canvas.height,
     leftCam: ()=>{
-        return this.x + (this.width * 0.25)
+        return cam.x + (cam.width * 0.50)
     },
     rightCam: ()=>{
-        return this.x + (this.width * 0.75)
+        return cam.x + (cam.width * 0.95)
     },
     topCam: ()=>{
-        return this.y + (this.height * 0.25)
+        return cam.y + (cam.height * 0.25)
     },
     bottomCam: ()=>{
-        return this.y + (this.height * 0.75)
+        return cam.y + (cam.height * 0.75)
     }
 };
 
 const player = {
-    X: 0,
+    X: 100,
     Y:0,
     width: 33,
     height: 32,
     walking: false,
     frameX: 0,
-    speed: 4,
+    speed: 2,
     frameY: 0,
     hp: 50,
     atck: 11,
@@ -236,18 +236,6 @@ function drawMap(){
 function drawPlayer(){
     ctx.drawImage(playerImg, player.width * player.frameX, player.height * player.frameY, player.width, player.height, player.X, player.Y, player.width, player.height);
 }
-function moverCamera(){
-    if (player.X < cam.leftCam()){
-        cam.x = player.X - (cam.width * 0.25);
-    } else if(player.X + player.width > cam.rightCam()){
-        cam.x = player.X + player.width - (cam.width * 0.75)
-    } else if (player.Y < cam.topCam()){
-        cam.x = player.X - (cam.width * 0.25);
-    } else if(player.X + player.width > cam.rightCam()){
-        cam.x = player.X + player.width - (cam.width * 0.75)
-    }
-
-}
 
 function battle(){
     drawBattleGround();
@@ -258,7 +246,7 @@ function draw(){
     drawMap();
     movimento();
     drawPlayer();
-    moverCamera();
+    console.log(player.X + player.width > cam.rightCam())
 }
 
 // setInterval(()=> {
@@ -306,6 +294,16 @@ window.addEventListener('keydown', (e)=>{
         player.walking = true
     } else if (e.keyCode === 13 && menuGame){
         menuGame = false;
+    }
+    
+    if (player.X < cam.leftCam()){
+        cam.x = player.X - (cam.width * 0.25);
+    } else if(player.X + player.width > cam.rightCam()){
+        cam.x = player.X + player.width - (cam.width * 0.75)
+    } else if (player.Y < cam.topCam()){
+        cam.x = player.X - (cam.width * 0.25);
+    } else if(player.X + player.width > cam.rightCam()){
+        cam.x = player.X + player.width - (cam.width * 0.75)
     }
 
 });
