@@ -4,6 +4,7 @@ canvas.width = 600;
 canvas.height = 600;
 var emCombat = false;
 var menuGame = true;
+var introText = false;
 const playerImg = new Image();
 const world = new Image();
 const groundWorld = new Image();
@@ -28,6 +29,7 @@ const desertWithCowBones = new Image();
 const mountains = new Image();
 const groundLittleLake = new Image();
 var contagem = 0;
+var introCount = 0;
 /**
  * 
  *  1 ground comon
@@ -293,11 +295,38 @@ const enemy = {
     speed: 7,
     frameY: 3
 }
+
 function drawTelaInicial(){
     drawMenu();
     gameName();
     menuItens();
 }
+function drawIntro(){
+    drawIntroScreen();
+}
+if(menuGame && introText){
+setInterval(()=>{
+    
+       
+
+}, 1500)
+}
+
+function drawIntroScreen(){
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0,0, canvas.width, canvas.height);
+    ctx.drawImage(menuImage, canvas.width /2 - 150, 200,300,300);
+}
+function drawIntroText(){
+    ctx.fillStyle="#808080";
+    ctx.font = "25px comic sans"
+    ctx.fillText(`${gameIntro[introCount]}`, canvas.width/2 - 200, 550);
+    if(introCount > gameIntro.length){
+        menuGame = false;
+
+    }
+    introCount++
+}   
 function drawMenu(){
     ctx.fillStyle = "#000000";
     ctx.fillRect(0,0, canvas.width, canvas.height)
@@ -399,15 +428,11 @@ function draw(){
     drawPlayer();
 }
 
-// setInterval(()=> {
-//     emCombat ? emCombat = false : emCombat = true
-// },
-// 5000000
-// )
-
 setInterval( ()=>{
-    if(menuGame){
+    if(menuGame && introText == false){
         drawTelaInicial();
+    }else if(menuGame && introText){
+        drawIntro();
     } else {
         if(!emCombat){
             draw();
@@ -443,7 +468,7 @@ window.addEventListener('keydown', (e)=>{
         player.frameY = 0
         player.walking = true
     } else if (e.keyCode === 13 && menuGame){
-        menuGame = false;
+        introText = true;
     }
     console.log(cam.y, cam.x)
     
