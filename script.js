@@ -30,6 +30,7 @@ const mountains = new Image();
 const groundLittleLake = new Image();
 var contagem = 0;
 var introCount = 0;
+const scriptIntro = document.createElement('script');
 /**
  * 
  *  1 ground comon
@@ -52,8 +53,6 @@ var introCount = 0;
  *  19 little lake       
  * 
  */
-
-
 let map = [
     [18,18,18,18,18,18,18,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [18,1,2,1,3,2,1,1,2,1,0,0,1,1,1,1,1,1,1,18,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -134,22 +133,23 @@ desertGround.src="ground100x50DesertMain1.png";
 desertWithCowBones.src="groundDesert100x50CowBones.png";
 mountains.src="ground100x50Mountains.png";
 groundLittleLake.src="grount100x50lake.png";
+scriptIntro.src="./intro.js";
 const cam  = {
     x:0,
     y:0,
     width: canvas.width,
     height: canvas.height,
     leftCam: ()=>{
-        return cam.x + (cam.width * 0.50)
+        return cam.x + (cam.width * 0.55)
     },
     rightCam: ()=>{
-        return cam.x + (cam.width * 0.50)
+        return cam.x + (cam.width * 0.45)
     },
     topCam: ()=>{
-        return cam.y + (cam.height * 0.50)
+        return cam.y + (cam.height * 0.75)
     },
     bottomCam: ()=>{
-        return cam.y + (cam.height * 0.50)
+        return cam.y + (cam.height * 0.75)
     }
 };
 
@@ -160,7 +160,7 @@ const player = {
     height: 32,
     walking: false,
     frameX: 0,
-    speed: 1.5,
+    speed: 0.9,
     frameY: 0,
     hp: 50,
     atck: 11,
@@ -294,7 +294,9 @@ function draw(){
     drawPlayer();
 }
     setInterval( ()=>{
-        if(menuGame && introText == false){
+        if(introText){
+            intro();
+        }else if(menuGame && introText == false){
             drawTelaInicial();
         } else {
             if(!emCombat){
@@ -339,7 +341,7 @@ window.addEventListener('keydown', (e)=>{
         cam.x = player.X - (cam.width * 0.25);
     } 
     if(player.X + player.width > cam.rightCam()){
-        cam.x = player.X + player.width - (cam.width * 0.95)
+        cam.x = player.X + player.width - (cam.width * 1.5)
     } 
     if (player.Y < cam.topCam()){
         cam.y = player.Y - (cam.height * 0.25);
