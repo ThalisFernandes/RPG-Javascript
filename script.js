@@ -1,10 +1,10 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = 600;
+canvas.width = 900;
 canvas.height = 600;
 var emCombat = false;
 var menuGame = true;
-var introText = false;
+var introText = true;
 const playerImg = new Image();
 const world = new Image();
 const groundWorld = new Image();
@@ -57,7 +57,7 @@ let gameIntro = [
 
 "e os Deuses viviam no vazio...",
 
-"até que uma grande luz surgiu do abismo de trevas...",
+"até que uma grande luz surgiu do\n abismo de trevas...",
 
 "tranzendo consigo, algo... a VIDA...",
 
@@ -304,33 +304,15 @@ function drawTelaInicial(){
 function drawIntro(){
     drawIntroScreen();
 }
-if(menuGame && introText){
-setInterval(()=>{
-    
-       
-
-}, 1500)
-}
-
 function drawIntroScreen(){
     ctx.fillStyle = "#000000";
     ctx.fillRect(0,0, canvas.width, canvas.height);
     ctx.drawImage(menuImage, canvas.width /2 - 150, 200,300,300);
-
-    setInterval(drawIntroText, 1000);
-}
-
-function drawIntroText(){
-    ctx.fillStyle="#FFFFFF";
-    ctx.font = "25px comic sans"
-    ctx.fillText(`${gameIntro[introCount]}`, canvas.width/2 - 200, 550);
     if(introCount > gameIntro.length){
         menuGame = false;
         ctx.clearRect()
     }
-    introCount++
-   
-} 
+}
 
 function drawMenu(){
     ctx.fillStyle = "#000000";
@@ -432,20 +414,31 @@ function draw(){
     movimento();
     drawPlayer();
 }
-
-setInterval( ()=>{
-    if(menuGame && introText == false){
-        drawTelaInicial();
-    }else if(menuGame && introText){
-        drawIntro();
-    } else {
-        if(!emCombat){
-            draw();
+if(menuGame && introText){
+    setInterval(()=>{
+        ctx.fillStyle="#000000";
+        ctx.fillRect(0,0, canvas.width, canvas.height)
+        ctx.fillStyle="#FFFFFF";
+        ctx.font = "25px comic sans"
+        ctx.fillText(`${gameIntro[introCount]}`, 10, 550);
+        console.log(introCount, menuGame)
+        introCount++
+        if(introCount > gameIntro.length) introText = false
+    }, 6000)
+} else {
+    setInterval( ()=>{
+        if(menuGame && introText == false){
+            drawTelaInicial();
         } else {
-            battle();
+            if(!emCombat){
+                draw();
+            } else {
+                battle();
+            }
         }
-    }
-}, 0.2)
+    }, 0.2);
+}
+
 function movimento(){
     if (player.frameX < 3 && player.walking) player.frameX ++ 
     else player.frameX = 0
@@ -473,7 +466,7 @@ window.addEventListener('keydown', (e)=>{
         player.frameY = 0
         player.walking = true
     } else if (e.keyCode === 13 && menuGame){
-        introText = true;
+        menuGame = false        
     }
     
     if (player.X < cam.leftCam()){
