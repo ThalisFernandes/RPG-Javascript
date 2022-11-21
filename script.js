@@ -316,18 +316,21 @@ function drawIntroScreen(){
     ctx.fillStyle = "#000000";
     ctx.fillRect(0,0, canvas.width, canvas.height);
     ctx.drawImage(menuImage, canvas.width /2 - 150, 200,300,300);
+
+    setInterval(drawIntroText, 1000);
 }
 
-// function drawIntroText(){
-//     ctx.fillStyle="#808080";
-//     ctx.font = "25px comic sans"
-//     ctx.fillText(`${gameIntro[introCount]}`, canvas.width/2 - 200, 550);
-//     if(introCount > gameIntro.length){
-//         menuGame = false;
-//     }
-//     introCount++
-//     drawIntroText();
-// } 
+function drawIntroText(){
+    ctx.fillStyle="#FFFFFF";
+    ctx.font = "25px comic sans"
+    ctx.fillText(`${gameIntro[introCount]}`, canvas.width/2 - 200, 550);
+    if(introCount > gameIntro.length){
+        menuGame = false;
+        ctx.clearRect()
+    }
+    introCount++
+   
+} 
 
 function drawMenu(){
     ctx.fillStyle = "#000000";
@@ -470,8 +473,7 @@ window.addEventListener('keydown', (e)=>{
         player.frameY = 0
         player.walking = true
     } else if (e.keyCode === 13 && menuGame){
-        introText = false;
-        menuGame = false;
+        introText = true;
     }
     
     if (player.X < cam.leftCam()){
