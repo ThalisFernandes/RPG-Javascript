@@ -408,7 +408,7 @@ var gameIntro = [
         },6000)
      }
 
-     var stopTimer = clearInterval(timer);
+     var stopTimer = (intv)=> clearInterval(intv);
      
     }
     
@@ -564,7 +564,7 @@ window.addEventListener('keydown', (e)=>{
         menuGame = true;
         introText = false;
         game();
-        stopTimer();
+        stopTimer(intro.timer);
 
     }
     
