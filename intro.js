@@ -196,7 +196,6 @@ var gameIntro = [
 
     var intro = ()=>{
      var executarIntro = false;
-    
      if(!executarIntro){
         setInterval(()=>{
             ctx.fillStyle="#000000";
