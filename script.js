@@ -390,7 +390,7 @@ var gameIntro = [
     var intro = ()=>{
      var executarIntro = false;
      if(!executarIntro){
-        let timer  = setInterval(()=>{
+        var timer  = setInterval(()=>{
             ctx.fillStyle="#000000";
             ctx.fillRect(0,0, canvas.width, canvas.height)
             ctx.fillStyle="#FFFFFF";
@@ -407,6 +407,8 @@ var gameIntro = [
                 }
         },6000)
      }
+
+     var stopTimer = clearInterval(timer);
      
     }
     
@@ -562,6 +564,7 @@ window.addEventListener('keydown', (e)=>{
         menuGame = true;
         introText = false;
         game();
+        stopTimer();
 
     }
     
