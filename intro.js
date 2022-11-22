@@ -1,126 +1,125 @@
-var gameIntro = [
 
-    "No começo tudo era apenas trevas...",
+ 1   "No começo tudo era apenas trevas...",
     
-    "e os Deuses viviam no vazio...",
+ 2   "e os Deuses viviam no vazio...",
     
-    "até que uma grande luz surgiu do\n abismo de trevas...",
+  3  "até que uma grande luz surgiu do\n abismo de trevas...",
     
-    "tranzendo consigo algo... a VIDA...",
+  4  "tranzendo consigo algo... a VIDA...",
     
-    "os Deuses olharam a explosão de luz que gerou o universo...",
+  5  "os Deuses olharam a explosão de luz que gerou o universo...",
     
-    "porém, eles não sabiam oque fazer após aquela explosão...",
+  6  "porém, eles não sabiam oque fazer após aquela explosão...",
     
-    "no meio de tudo isso um pequeno planeta...",
+   7 "no meio de tudo isso um pequeno planeta...",
     
-    "sozinho no extremo canto direito, ao fim de todo o espaço...",
+    8"sozinho no extremo canto direito, ao fim de todo o espaço...",
     
-    "com sua própria lua, e um sol, chamou a atenção dos Deuses...",
+    9"com sua própria lua, e um sol, chamou a atenção dos Deuses...",
     
-    "pois este planeta tinha algo de especial...",
+   10 "pois este planeta tinha algo de especial...",
     
-    "os Deuses tiveram uma ideia", 
+    11"os Deuses tiveram uma ideia", 
     
-    "criar uma raça, para viver nesse planeta...",
+    12"criar uma raça, para viver nesse planeta...",
     
-    "Alhtrora a Deusa da sabedoria, concedeu a", 
+    13"Alhtrora a Deusa da sabedoria, concedeu a", 
     
-    "essas criaturas capacidade de pensar...",
+    14"essas criaturas capacidade de pensar...",
     
-    "drauthor o Deus da força e virtude, concedeu a essa raça, força... ",
+    15"drauthor o Deus da força e virtude, concedeu a essa raça, força... ",
     
-    "zuldazar o Deus das florestas, concedeu a eles", 
+    16"zuldazar o Deus das florestas, concedeu a eles", 
     
-    "habilidade de se comunicar com a floresta...",
+    17"habilidade de se comunicar com a floresta...",
     
-    "Therathor o Criador Divino, os ensinou a criatividade... ",
+    18"Therathor o Criador Divino, os ensinou a criatividade... ",
     
-    "Lathare o Deus dos ventos, fez com que ",
+    19"Lathare o Deus dos ventos, fez com que ",
     
-    "os ventos ficassem agradaveis e não muito fortes...",
+    20"os ventos ficassem agradaveis e não muito fortes...",
     
-    "Drathur-alor Deus dos mares, concedeu", 
+    21"Drathur-alor Deus dos mares, concedeu", 
     
-    "sabedoria para poderem velejar e criar embarcações...",
+    22"sabedoria para poderem velejar e criar embarcações...",
     
-    "para que assim eles pudessem desbravar o planeta deles..",
+    23"para que assim eles pudessem desbravar o planeta deles..",
     
-    "Arth-azarir-dratur Filha de Alhtrora e Drauthor", 
+    24"Arth-azarir-dratur Filha de Alhtrora e Drauthor", 
     
-    "os concedeu a capacidade de amar uns aos outros...",
+    25"os concedeu a capacidade de amar uns aos outros...",
     
-    "Os demais Deuses evitaram ter contato com a raça criada...",
+    26"Os demais Deuses evitaram ter contato com a raça criada...",
     
-    "que foi chamada de \"Os filhos\" ...",
+    27"que foi chamada de \"Os filhos\" ...",
     
-    "os Filhos viveram 5000 anos, desbravaram", 
+    28"os Filhos viveram 5000 anos, desbravaram", 
     
-    "o planeta, criaram outras tribos...",
+    29"o planeta, criaram outras tribos...",
     
-    "criaram reinos e cidades ...",
+    30"criaram reinos e cidades ...",
     
-    "no ano 5000 a.R, o \"Filho\" chamado", 
+    31"no ano 5000 a.R, o \"Filho\" chamado", 
     
-    "Ultrierl, filho de UrtGarzelg e MirthGranzirdth...",
+    32"Ultrierl, filho de UrtGarzelg e MirthGranzirdth...",
     
-    "contra o conselho dos dez, o governo liderado", 
+    33"contra o conselho dos dez, o governo liderado", 
     
-    "pelos herdeiros dos \"Primeiros Filhos\"...",
+    34"pelos herdeiros dos \"Primeiros Filhos\"...",
     
-    "Ultrierlt liderou um grupo para viverem", 
+    35"Ultrierlt liderou um grupo para viverem", 
     
-    "no continente de Dralzar...",
+    36"no continente de Dralzar...",
     
-    "um continent desertico, cheio de  vulcões", 
+    37"um continent desertico, cheio de  vulcões", 
     
-    "e  cercado pelo deserto que ficou conhecido como", 
+    38"e  cercado pelo deserto que ficou conhecido como", 
     
-    "\"deserto do desespero\"...",
+    39"\"deserto do desespero\"...",
     
-    "Onde diversos \"filhos\", se mataram por não", 
+    40"Onde diversos \"filhos\", se mataram por não", 
     
-    "verem esperança ao tentar atravesar o deserto ...",
+    41"verem esperança ao tentar atravesar o deserto ...",
     
-    "Ultrierlt criou a cidade de VulDrathug, conhecida", 
+    42"Ultrierlt criou a cidade de VulDrathug, conhecida", 
     
-    "como a cidade dos filhos de Ultrierlt...",
+    43"como a cidade dos filhos de Ultrierlt...",
     
-    "no ano de 3000 a.R, se iniciou a primeira guerra dos filhos...",
+    44"no ano de 3000 a.R, se iniciou a primeira guerra dos filhos...",
     
-    "uma guerra que separou ainda mais os povos,", 
+    45"uma guerra que separou ainda mais os povos,", 
     
-    "fazendo com que os filhos de Ultrierlt...",
+    46"fazendo com que os filhos de Ultrierlt...",
     
-    "se auto intitulassem de \"os Ultriem\"", 
+    47"se auto intitulassem de \"os Ultriem\"", 
     
-    "suas peles após anos expostas ao calor...",
+    48"suas peles após anos expostas ao calor...",
     
-    "e vivendo perto de enorme vulcão, começou a escurecer...",
+    49"e vivendo perto de enorme vulcão, começou a escurecer...",
     
-    "e os filhos começaram a não ver mais os Ultriem como naturais...",
+    50"e os filhos começaram a não ver mais os Ultriem como naturais...",
     
-    "no ano de 2000 a.R, outra divisão ocorreu,", 
+    51"no ano de 2000 a.R, outra divisão ocorreu,", 
     
-    "Filhos que começaram a se envolver com necromancia...",
+    52"Filhos que começaram a se envolver com necromancia...",
     
-    "e magias profanas aos Deuses, ",
+    53"e magias profanas aos Deuses, ",
     
-    "foram explusos da escola de Magia de DrunDahlMor,", 
+    54"foram explusos da escola de Magia de DrunDahlMor,", 
     
-    "e foram chamados de \"ZulDamor\"...",
+    55"e foram chamados de \"ZulDamor\"...",
     
-    "os ZulDamor conseguiram contato ",
+    56"os ZulDamor conseguiram contato ",
     
-    "com uma criatura ancestral chamada Zul'thum, o senhor da escuridão...",
+    57"com uma criatura ancestral chamada Zul'thum, o senhor da escuridão...",
     
-    "Zul'thum profanou os ZulDamor", 
+    58"Zul'thum profanou os ZulDamor", 
     
-    "fazendo com que crescecem chifres em suas cabeças...",
+    59"fazendo com que crescecem chifres em suas cabeças...",
     
-    "explusos e agora transformados,", 
+    60"explusos e agora transformados,", 
     
-    "eles se exilaram para uma ilha muito distante, chamada de Zaltror...",
+    61"eles se exilaram para uma ilha muito distante, chamada de Zaltror...",
     
     "uma ilha com criaturas ferrozes e seres das", 
     
@@ -192,27 +191,5 @@ var gameIntro = [
     
     "Salve o mundo da escuridão eterna...",
     "Não falhe, pois essa é a única esperança..."
-    ];
-
-    var intro = ()=>{
-     var executarIntro = false;
-     if(!executarIntro){
-        setInterval(()=>{
-            ctx.fillStyle="#000000";
-            ctx.fillRect(0,0, canvas.width, canvas.height)
-            ctx.fillStyle="#FFFFFF";
-            ctx.font = "25px comic sans"
-            ctx.fillText(`${gameIntro[introCount]}`, 10, 550);
-            console.log(introCount, menuGame)
-            introCount++
-            if(introCount > gameIntro.length){
-                    introText = false;
-                    executarIntro = true;
-                }
-        },6000)
-     }
-     
-    }
-    clearInterval(intro) 
 
 

@@ -28,6 +28,10 @@ const desertGround = new Image();
 const desertWithCowBones = new Image();
 const mountains = new Image();
 const groundLittleLake = new Image();
+const darkMagic = new Audio('./music/The Dark Amulet.mp3');
+const windsOfStories = new Audio('./music/Winds Of Stories.mp3');
+const menuMusic = new Audio('./music/song18.mp3');
+const InvasioOfChaos = new Audio('./music/invasionOfChaos.mp3');
 var contagem = 0;
 var introCount = 0;
 const scriptIntro = document.createElement('script');
@@ -340,7 +344,7 @@ var gameIntro = [
     
     "começaram a se preparar para a grande guerra...",
     
-    "no ano 50 a.R, Zul'thum pediu que fosse criado", 
+    "no ano 50 a.R, Zul'thum ordenou que fosse criado", 
     
     "um enorme portal chamado de Zal'taraut,", 
     
@@ -387,8 +391,8 @@ var gameIntro = [
     "Salve o mundo da escuridão eterna...",
     "Não falhe, pois essa é a única esperança..."
     ];
-    var intro = ()=>{
-     var executarIntro = false;
+    var intro = (bool)=>{
+     var executarIntro = bool ? bool : false;
      if(!executarIntro){
         var timer  = setInterval(()=>{
             ctx.fillStyle="#000000";
@@ -398,6 +402,15 @@ var gameIntro = [
             ctx.fillText(`${gameIntro[introCount]}`, 10, 550);
             console.log(introCount, `introText: ${introText} / menuGame: ${menuGame}`);
             introCount++
+            if(introCount > 0 && introCount < 50) windsOfStories.play();
+            if(introCount > 55  && introCount < 80){
+                windsOfStories.pause();
+                darkMagic.play();
+            }
+            if(introCount > 81){
+                darkMagic.pause();
+                InvasioOfChaos.play();
+            }
             if(introCount >= gameIntro.length){
                     introText = false;
                     menuGame = true;
@@ -416,7 +429,9 @@ var gameIntro = [
 function drawMenu(){
     ctx.fillStyle = "#000000";
     ctx.fillRect(0,0, canvas.width, canvas.height)
-    ctx.drawImage(menuImage, canvas.width /2 - 150, 200,300,300)
+    ctx.drawImage(menuImage, canvas.width /2 - 150, 200,300,300);
+    InvasioOfChaos.pause();
+    menuMusic.play();
 }
 function gameName(){
     ctx.fillStyle="#808080";
@@ -559,12 +574,17 @@ window.addEventListener('keydown', (e)=>{
         player.frameY = 0
         player.walking = true
     } else if (e.keyCode === 13 && menuGame){
-        menuGame = false        
+        menuGame = false;
+        executarIntro = true;
+        menuMusic.pause();
+        windsOfStories.pause();        
     } else if (e.keyCode === 32 && introText){
         menuGame = true;
         introText = false;
+        windsOfStories.pause();
         game();
         stopTimer(intro.timer);
+        executarIntro = true;
 
     }
     
