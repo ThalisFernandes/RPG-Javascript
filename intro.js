@@ -121,29 +121,29 @@
     
     61"eles se exilaram para uma ilha muito distante, chamada de Zaltror...",
     
-    "uma ilha com criaturas ferrozes e seres das", 
+    62"uma ilha com criaturas ferrozes e seres das", 
     
-    "trevas escondidos dentro de suas cavernas...",
+    63"trevas escondidos dentro de suas cavernas...",
     
-    "nessa ilha eles criaram o templo de zul'thum...",
+    64"nessa ilha eles criaram o templo de zul'thum...",
     
-    "no ano 1501 a.R, os Ultriem começaram a negociar com os Zuldamor....",
+    65"no ano 1501 a.R, os Ultriem começaram a negociar com os Zuldamor....",
     
-    "no Ano 500 a.R, nasceu Iksu Darthu'zaldor", 
+    66"no Ano 500 a.R, nasceu Iksu Darthu'zaldor", 
     
-    "filho de Naena Zaltrugir (Zuldamor) e Naramos TheraDhur'zal(Ultriem)...",
+    67"filho de Naena Zaltrugir (Zuldamor) e Naramos TheraDhur'zal(Ultriem)...",
     
-    "Iksu, começou um levante aos 20 anos,", 
+    68"Iksu, começou um levante aos 20 anos,", 
     
-    "incitando os exercitos para que eles pudessem se rebelar contra os filhos ...",
+    69"incitando os exercitos para que eles pudessem se rebelar contra os filhos ...",
     
-    "no ano de 350 a.R Iksu se encontrou com Zul'thum no templo", 
+    70"no ano de 350 a.R Iksu se encontrou com Zul'thum no templo", 
     
-    "onde o mesmo o nomeou o comandante dos exercitos ddas sombras...",
+    71"onde o mesmo o nomeou o comandante dos exercitos ddas sombras...",
     
-    "no ano 100 a.R as tropas dos Zuldamor e Ultriem,", 
+    72"no ano 100 a.R as tropas dos Zuldamor e Ultriem,", 
     
-    "começaram a se preparar para a grande guerra...",
+    73"começaram a se preparar para a grande guerra...",
     
     "no ano 50 a.R, Zul'thum pediu que fosse criado", 
     

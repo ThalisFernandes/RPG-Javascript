@@ -35,6 +35,24 @@ const InvasioOfChaos = new Audio('./music/invasionOfChaos.mp3');
 var contagem = 0;
 var introCount = 0;
 const scriptIntro = document.createElement('script');
+//--------iMAGENS DA INTRO ABAIXO--------------------
+const img_universe_begin = new Image();
+const img_gods_seen_universe = new Image();
+const img_planet = new Image();
+const img_elf = new Image();
+const Ultriert = new Image();
+const conselho_10 = new Image();
+const Ilha_morte = new Image();
+const Iksu = new Image();
+const deserto = new Image();
+const cidade_ultraim = new Image();
+const ultriem = new Image();
+const zulthun = new Image();
+const elfos_transformados = new Image();
+const zalTaraut = new Image();
+const rebeliao_ira = new Image();
+const fim_rebeliao = new Image();
+const cavaleiros_penumbra = new Image();
 /**
  * 
  *  1 ground comon
@@ -72,7 +90,7 @@ let map = [
     [18,1,2,2,2,2,2,1,1,1,8,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,13,13,13,13,13,13,13,13,13,13,0,0,0,0,1,1,1,1,1,0],
     [18,1,1,2,3,2,1,1,1,1,1,8,0,0,0,1,0,1,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,13,13,13,13,13,13,13,13,13,13,13,0,0,0,0,1,1,1,1,1,0],
     [18,1,1,1,2,1,1,1,1,1,1,1,8,0,0,0,0,1,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,13,13,14,13,13,13,13,13,13,13,13,0,0,0,0,1,1,1,1,1,0],
-    [18,1,1,1,1,1,1,6,1,1,1,1,1,8,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,8,0,0,0,0,0,0,0,0,0,0,13,13,13,13,13,13,14,13,13,14,03,0,0,0,1,0,1,1,1,1,0],
+    [18,1,1,1,1,1,1,6,1,1,1,1,1,8,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,8,0,0,0,0,0,0,0,0,0,0,13,13,13,13,13,13,14,13,13,14,3,0,0,0,1,0,1,1,1,1,0],
     [18,2,1,1,4,1,1,1,1,1,2,2,1,1,8,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,8,0,0,0,0,0,0,0,0,0,0,13,13,13,13,13,13,13,13,13,13,13,0,0,0,1,1,1,1,1,1,0],
     [18,2,1,1,1,1,1,1,1,1,2,2,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,8,0,0,0,1,1,1,1,0,0,0,13,13,13,13,13,13,13,13,13,13,13,0,0,0,0,1,1,1,1,0,0],
     [18,2,2,1,2,1,1,1,1,1,1,1,1,1,8,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,8,0,0,0,1,1,1,1,0,0,0,13,13,13,13,13,13,13,13,13,13,13,0,0,0,1,1,1,1,1,0,0],
@@ -114,7 +132,7 @@ let map = [
     [0,18,18,18,1,1,1,1,1,1,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,18,0],
     [0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,0]   
 ]
-
+//------------------------- In game Images ------------------------------
 playerImg.src ="heroic_01.png";
 world.src="teste1.png";
 groundWorld.src="grount100x50.png";
@@ -132,12 +150,36 @@ topEdge.src="groundEdge100x50Top.png";
 edgeBottom90.src="groundEdge100x50EdgeBottom.png";
 leftEdge.src="groundEdge100x50Left.png";
 leftEdge90.src="groundEdge100x50TopRight.png";
-menuImage.src="blackHole.png";
+
 desertGround.src="ground100x50DesertMain1.png";
 desertWithCowBones.src="groundDesert100x50CowBones.png";
 mountains.src="ground100x50Mountains.png";
 groundLittleLake.src="grount100x50lake.png";
 scriptIntro.src="./intro.js";
+//----------------- Menu Image -------------------------//
+
+menuImage.src="blackHole.png";
+
+//------------- Intro Images ----------------// 
+
+img_universe_begin.src="./Intro_imgs/img_universe_begin.jpg";
+img_gods_seen_universe.src="gods_seen_universe.jpg";
+img_planet.src="planet.jpg";
+img_elf.src="./elf.jpg";
+Ultriert.src="./Ultrierlt.jpg";
+conselho_10.src="./conselho_dos_10.jpg";
+cidade_ultraim.src="./Cidade.jpg";
+deserto.src="./deserto_desespero.jpg";
+ultriem.src="./Ultraim.jpg";
+zulthun.src="./Zultun.jpg";
+elfos_transformados.src="./elfos_transformados.jpg";
+Iksu.src="./iksu.jpg";
+zalTaraut.src="./zalTaraut.jpg";
+rebeliao_ira.src="./rebelian_da_ira.jpg";
+fim_rebeliao.src="./rebeliao_da_ira.jpg";
+cavaleiros_penumbra.src="./img_cavaleiros_da_penumbra.jpg";
+
+
 const cam  = {
     x:0,
     y:0,
@@ -270,7 +312,7 @@ var gameIntro = [
     
     "no continente de Dralzar...",
     
-    "um continent desertico, cheio de  vulcões", 
+    "um continente desertico, cheio de  vulcões", 
     
     "e  cercado pelo deserto que ficou conhecido como", 
     
@@ -402,14 +444,56 @@ var gameIntro = [
             ctx.fillText(`${gameIntro[introCount]}`, 10, 550);
             console.log(introCount, `introText: ${introText} / menuGame: ${menuGame}`);
             introCount++
-            if(introCount > 0 && introCount < 50) windsOfStories.play();
+            // Draw the Images int the Screen Logic
+           
+
+            // End Images logic
+            if(introCount > 0 && introCount < 50){
+                ctx.fillStyle = "#000000";
+                ctx.fillRect(0,0, canvas.width, canvas.height/ 2);
+                if(introCount > 3 && introCount < 6){
+                    ctx.drawImage(img_universe_begin, 0, 0,900,500);
+                } else if (introCount > 8 && introCount < 11){
+                    ctx.drawImage(img_gods_seen_universe, 0, 0,900,500);
+                } else if (introCount > 11 && introCount < 30){
+                    ctx.drawImage(img_planet, 0, 0,900,500);
+                } else if (introCount > 30 && introCount < 39){
+                    ctx.drawImage(Ultriert, 0, 0,900,500);
+                } else if (introCount > 39 && introCount < 43){
+                    ctx.drawImage(deserto, 0, 0,900,500);
+                } else if (introCount > 44 && introCount < 48){
+                    ctx.drawImage(cidade_ultraim, 0, 0,900,500);
+                } else if (introCount > 50 && introCount < 54){
+                    ctx.drawImage(ultriem, 0, 0,900,500);
+                } 
+                
+                windsOfStories.play();
+            }
+                
             if(introCount > 55  && introCount < 80){
                 windsOfStories.pause();
                 darkMagic.play();
+                if (introCount > 55 && introCount < 59){
+                    ctx.drawImage(zulthun, 0, 0,900,500);
+                } else if (introCount > 60 && introCount < 64){
+                    ctx.drawImage(elfos_transformados, 0, 0,900,500);
+                } else if (introCount > 65 && introCount < 69){
+                    ctx.drawImage(Iksu, 0, 0,900,500);
+                } else if (introCount > 70 && introCount < 73){
+                    ctx.drawImage(zalTaraut, 0, 0,900,500);
+                } else if (introCount > 74 && introCount < 80){
+                    ctx.drawImage(fim_rebeliao, 0, 0,900,500);
+                }
             }
             if(introCount > 81){
                 darkMagic.pause();
                 InvasioOfChaos.play();
+                if (introCount > 81 && introCount < 86){
+                    ctx.drawImage(img_planet, 0, 0,900,500);
+                } else if (introCount > 87 || introCount == 95){
+                    ctx.drawImage(cavaleiros_penumbra, 0, 0,900,500);
+                }
+
             }
             if(introCount >= gameIntro.length){
                     introText = false;
