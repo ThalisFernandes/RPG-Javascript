@@ -120,3 +120,19 @@ Heroi é seu dever acabar com os cavaleiros da penumbra, e impedir que eles salv
 
 para salvar o mundo de uma era das trevas... 
 
+
+
+## Nomes dos cavaleiros da penumbra
+
+- Baltiel
+    ![alt text](image.png)
+- maltraNiel
+    ![alt text](image-1.png)
+- Urael
+    ![alt text](image-2.png)
+- MeFisto
+    ![alt text](image-3.png)
+- Sarana
+    ![alt text](image-4.png)
+
+
