@@ -53,6 +53,10 @@ const zalTaraut = new Image();
 const rebeliao_ira = new Image();
 const fim_rebeliao = new Image();
 const cavaleiros_penumbra = new Image();
+
+//=========== Itens para batalha ================//
+const battleMusic = new Audio('./music/battleRPGtheme.mp3');
+const imageBattleGround1 = new Image();
 /**
  * 
  *  1 ground comon
@@ -160,6 +164,10 @@ scriptIntro.src="./intro.js";
 
 menuImage.src="blackHole.png";
 
+//-------------------Battle ground Images -------------------- // 
+
+imageBattleGround1.src="./backgroundTeste.jpg";
+
 //------------- Intro Images ----------------// 
 
 img_universe_begin.src="./Intro_imgs/img_universe_begin.jpg";
@@ -198,7 +206,26 @@ const cam  = {
         return cam.y + (cam.height * 0.75)
     }
 };
+//========= Todas as magias do jogo =============//
+const Magias = [
+    {nome: "Fera interior", escola: "Ilusão", custo: 50, efeito: "Aumenta o dano do personagem em 50 ao custo de ", efct:{dano: 500, efeito: "buff"}, valor:300, alvo: "player"},
+    {nome: "Sopro de Lathare", escola: "Elemental", custo: 100, efeito: "Lança um vento poderoso contra os inimigos que causa 150 de dano", efct:{dano: 150, efeito: null}, valor:600, alvo: "enemy"},
+    {nome: "Benção de zuldazar", escola: "Elemental", custo: 100, efeito: "Lança uma enorme onda sobre os inimigos, que causa 150 de dano", efct:{dano: 150, efeito: null}, valor:600, alvo: "enemy"},
+    {nome: "Lança Eteril", escola: "Destruição", custo: 20, efeito: "Dispara uma lança de caos, que ignora defesa, e causa 10 de dano",efct:{dano: 10, efeito: null}, valor:100},
+    {nome: "Lança Negra de Zulthun", escola: "Profanação", custo: 30, efeito: "Invoca os poderes malignos de zulthun, para inflingir 50 de dano aos inimigos (Não afeta seres das trevas)",efct:{dano: 50, efeito: null}, valor:1000, alvo: "enemy"},
+    {nome: "Escuridão interior", escola: "Profanação", custo: 50, efeito: "Encha seu corpo com energia maligna, aumentando seu dano por 50 (Não afeta seres das trevas)", efct:{dano: 50, efeito: null}, valor:1500, alvo: "player"},
+    {nome: "Lua Negra", escola: "Profanação", custo: 150, efeito: "Invoca a lua negra de Zal'Taraut, causando sono profundo em seus inimigos (Não afeta seres das trevas)", valor:1000, alvo: "enemy", efct:{dano: 0, efeito: "debuff"}},
+    {nome: "Durmstrang", escola: "Profanação", custo: 200, efeito: "Cause dor e agonia aos seus inimigos, fazendo-os morrer lentamente, cause 500 de dano, caso o inimigo tenha  (Não afeta seres das trevas)", valor:1000, alvo: "enemy", efct:{dano: 500, efeito: null}},
+    {nome: "Mors impia", escola: "Profanação", custo: 50, efeito: "Cause dor e agonia aos seus inimigos,  (Não afeta seres das trevas)", valor:1000, alvo: "enemy", efct:{dano: 500, efeito: null}},
+    {nome: "Luz de Anathor", escola: "Restauração", custo: 50, efeito: "Cure suas feridas, lave sua alma, receba 100 pontos de vida", valor:1000, alvo: "player", efct:{dano: 100, efeito: "buff"}}
+]
+//======================================================//
+//=======================Todas as kinesis do Jogo =====================//
 
+const kinesis = [
+
+]
+//==========================================
 const player = {
     X: 300,
     Y: 150,
@@ -208,17 +235,152 @@ const player = {
     frameX: 0,
     speed: 0.9,
     frameY: 0,
+    level:1,
     hp: 50,
+    mp:50,
     atck: 11,
-    def: 10
+    def: 8,
+    xp:0,
+    spells: [
+        {nome: "cura", afeito: "cura 10 de hp", efct: 10, sound: true, custo: 10}, 
+        {nome: "FireBall", afeito: "Ataque Mágico de fogo, causa 10 de dano", efct: 10, sound: true, custo: 30},
+        {nome: "Explosão de gelo", afeito: "Causa 20 de dano de gelo", efct: 20, sound: true, custo: 30}
+    ]
 }
-const enemy = {
+const enemyTipo1 = {
     width: 30,
     height: 31,
     moving: true,
     frameX: 0,
     speed: 7,
-    frameY: 3
+    frameY: 3,
+    level:1,
+    hp: 50,
+    mp:0,
+    atck: 10,
+    def: 5,
+    xp:15,
+    spells: []
+}
+const enemyTipo2 = {
+    width: 30,
+    height: 31,
+    moving: true,
+    frameX: 0,
+    speed: 7,
+    frameY: 3,
+    level: 6,
+    hp: 150,
+    mp:0,
+    atck: 20,
+    def: 15,
+    xp:50,
+    spells: []
+}
+
+const enemyTipo3 = {
+    width: 30,
+    height: 31,
+    moving: true,
+    frameX: 0,
+    speed: 7,
+    frameY: 3,
+    level: 10,
+    hp: 150,
+    mp: 100,
+    atck: 20,
+    def: 15,
+    xp:100,
+    spells: [
+        {nome: "cura", afeito: "cura 10 de hp", efct: 10, sound: true, custo: 10},
+        {nome: "Lança Eteril", afeito: "Causa 15 de dano no inimigo", efct: 10, sound: true, custo: 30}
+    ]
+}
+
+const enemyTipo4 = {
+    width: 30,
+    height: 31,
+    moving: true,
+    frameX: 0,
+    speed: 7,
+    frameY: 3,
+    level: 15,
+    hp: 300,
+    mp: 100,
+    atck: 20,
+    def: 15,
+    xp:150,
+    spells: [
+        {nome: "cura", afeito: "cura 10 de hp", efct: 10, sound: true, custo: 10},
+        {nome: "Lança Eteril", afeito: "Causa 15 de dano no inimigo", efct: 10, sound: true, custo: 30}
+    ]
+}
+const enemyTipo5 = {
+    width: 30,
+    height: 31,
+    moving: true,
+    frameX: 0,
+    speed: 7,
+    frameY: 3,
+    level:20,
+    hp: 550,
+    mp: 250,
+    atck: 20,
+    def: 15,
+    xp:200,
+    spells: [
+        {nome: "cura", afeito: "cura 50 de hp", efct: 10, sound: true, custo: 10},
+        {nome: "Lança Eteril", afeito: "Causa 15 de dano no inimigo", efct: 10, sound: true, custo: 30}
+    ]
+}
+const enemyTipo6 = {
+    width: 30,
+    height: 31,
+    moving: true,
+    frameX: 0,
+    speed: 7,
+    frameY: 3,
+    hp: 150,
+    mp: 100,
+    atck: 20,
+    def: 15,
+    spells: [
+        {nome: "cura", afeito: "cura 10 de hp", efct: 10, sound: true, custo: 10},
+        {nome: "Lança Eteril", afeito: "Causa 15 de dano no inimigo", efct: 10, sound: true, custo: 30}
+    ]
+}
+const Baltazar = {
+    width: 30,
+    height: 31,
+    moving: false,
+    frameX: 0,
+    speed: 7,
+    frameY: 3,
+    hp: 5000,
+    mp: 1500,
+    atck: 20,
+    def: 15,
+    spells: [
+        {nome: "ad eforum", afeito: "cura 500 de hp", efct: 500, sound: true, custo: 150},
+        {nome: "Et Engler braur", afeito: "Causa 400 de dano mágico", efct: 400, sound: true, custo: 200},
+        {nome: "Sanctus Dominium", afeito: "Causa 400 de dano mágico", efct: 400, sound: true, custo: 200}
+    ]
+}
+
+
+const worldEnviroment =  {
+    freeWalking : 0,
+    raining: false,
+    night: false,
+    day: true,
+    wind: false,
+    storm: false,
+    inBattle: false
+}
+const bestiario = {
+    1: "morcego",
+    2: "slime",
+    3: "bandidos"
 }
 
 function drawTelaInicial(){
@@ -525,10 +687,28 @@ function gameName(){
 function drawBattleGround(){
     ctx.fillStyle = "#000000";
     ctx.fillRect(0,0, canvas.width, canvas.height);
+    ctx.drawImage(imageBattleGround1, 0, 0,900,600);
 }
-function drawEnemy(){
 
-    ctx.drawImage(enemyBat, 150, 150, 150, 150);
+function drawEnemy(monster){
+    let monsterImg;
+    switch (monster) {
+        case 1:
+            monsterImg = enemyBat;
+            break;
+        case 2:
+            monsterImg = enemySlime;
+            break;
+        case 3: 
+            monsterImg = "";
+            break;
+        
+        default:
+            monsterImg = enemyBat;
+            break;
+    }
+
+    ctx.drawImage(monsterImg, 150, 150, 150, 150);
 }
 function menuItens(){
     ctx.fillStyle="#808080";
@@ -602,9 +782,33 @@ function drawPlayer(){
     ctx.drawImage(playerImg, player.width * player.frameX, player.height * player.frameY, player.width, player.height, player.X, player.Y, player.width, player.height);
 }
 
-function battle(){
+function battle(monster){
+    battleMusic.play();
     drawBattleGround();
-    drawEnemy();
+    drawEnemy(monster);
+    drawCombatMenu()
+}
+
+function hpMpBar(){
+
+}
+function drawCombatMenu(){
+    ctx.fillStyle = "#0D64C1";
+    ctx.beginPath();
+    ctx.moveTo(0, 399);
+    ctx.lineTo(canvas.width,400);
+    ctx.strokeStyle = "White";
+    ctx.stroke();
+    ctx.fillRect(0,400, canvas.width, 200);
+    // ===== Desenhando as opções de batalha ====//
+    ctx.fillStyle="White";
+    ctx.font = "25px comic sans"
+    ctx.fillText('1 - Atacar ⚔️', 10, 440);
+    ctx.fillText('2 - Magia 🪄', 250, 440);
+    ctx.fillText('3 - Usar Itens ⚗️', 450, 440);
+    ctx.fillText('4 - Kinesis ✨', 660, 440);
+    ctx.fillText('5 - Fugir 🏃🏾', 10, 500);
+
 }
 
 function draw(){
@@ -635,28 +839,59 @@ function movimento(){
     if (player.frameX < 3 && player.walking) player.frameX ++ 
     else player.frameX = 0
 }
+function escolherInimigo(){
+    let monstroNumero = Math.floor((Math.random() * 3)+ 1);
+    return monstroNumero;
+}
 
+function callBattle(){
+    let monstroEscolhido = escolherInimigo();
+    battle(monstroEscolhido)
 
+}
 
 
 window.addEventListener('keyup', e =>  player.walking = false)
 window.addEventListener('keydown', (e)=>{
     if(e.keyCode === 37) {
-        player.X -= player.speed
-        player.frameY = 1
-        player.walking = true
+        if(worldEnviroment.freeWalking <= 100){
+            player.X -= player.speed;
+            player.frameY = 1;
+            player.walking = true;
+            worldEnviroment.freeWalking += 2
+        } else {
+            emCombat= true;
+        }
+       
     } else if(e.keyCode === 38) {
-        player.Y -= player.speed
-        player.frameY = 3
-        player.walking = true
+        if(worldEnviroment.freeWalking <= 100){
+            player.Y -= player.speed;
+            player.frameY = 3;
+            player.walking = true;
+            worldEnviroment.freeWalking += 1;
+        } else {
+            emCombat= true;
+        }
     } else if(e.keyCode === 39) {
-        player.X += player.speed
-        player.frameY = 2
-        player.walking = true
+        if(worldEnviroment.freeWalking <= 100){
+            player.X += player.speed;
+            player.frameY = 2;
+            player.walking = true;
+            worldEnviroment.freeWalking += 2
+        } else {
+            emCombat= true;
+        }
+        
     } else if(e.keyCode === 40) {
-        player.Y += player.speed
-        player.frameY = 0
-        player.walking = true
+        if(worldEnviroment.freeWalking <= 100){
+            player.Y += player.speed;
+            player.frameY = 0;
+            player.walking = true;
+            worldEnviroment.freeWalking += 1;
+        } else {
+            emCombat= true
+        }
+        
     } else if (e.keyCode === 13 && menuGame){
         menuGame = false;
         executarIntro = true;

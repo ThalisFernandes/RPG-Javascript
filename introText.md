@@ -126,7 +126,7 @@ para salvar o mundo de uma era das trevas...
 
 - Baltiel
     ![alt text](image.png)
-- maltraNiel
+- Baltazar
     ![alt text](image-1.png)
 - Urael
     ![alt text](image-2.png)
