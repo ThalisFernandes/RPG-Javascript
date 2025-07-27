@@ -1,34 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O despertar das kineses</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="./ThundeStormFavicon.png">
+    <title>O Despertar das Kineses - RPG</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        #gameContainer {
+            position: relative;
+            border: 2px solid #333;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #canvas {
+            display: block;
+            background-color: #000;
+        }
+
+        #loadingScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 18px;
+            z-index: 1000;
+        }
+
+        .loading-spinner {
+            border: 4px solid #333;
+            border-top: 4px solid #4a90e2;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #controls {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-size: 12px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        overflow-y: hidden;
-    }
-    body{
-        width:100%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        background-color: black;
-    }
-    canvas{
-        margin-top: 50px;
-    }
-</style>
+
 <body>
-    <canvas id="canvas"></canvas>
+    <div id="gameContainer">
+        <canvas id="canvas" width="900" height="600"></canvas>
+
+        <div id="loadingScreen">
+            <div class="loading-spinner"></div>
+            <div>Carregando O Despertar das Kineses...</div>
+            <div id="loadingProgress">0%</div>
+        </div>
+
+        <div id="controls">
+            <strong>Controles:</strong><br>
+            Setas - Mover<br>
+            Enter - Confirmar<br>
+            Espaço - Pular Intro<br>
+            S - Salvar/Quick Save<br>
+            L - Carregar/Quick Load<br>
+            D - Debug Mode (Shop Area)<br>
+            1-5 - Ações de Combate<br>
+            ESC - Menu/Pausar
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+
+    <script>
+        // Loading screen management
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const loadingProgress = document.getElementById('loadingProgress');
+
+            // Simulate loading progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+
+                    // Hide loading screen after a short delay
+                    setTimeout(() => {
+                        loadingScreen.classList.add('hidden');
+                    }, 500);
+                }
+                loadingProgress.textContent = Math.round(progress) + '%';
+            }, 100);
+        });
+
+        // Error handling
+        window.addEventListener('error', (event) => {
+            console.error('Game error:', event.error);
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.innerHTML = `
+                <div style="color: #e74c3c; text-align: center;">
+                    <h3>Erro ao carregar o jogo</h3>
+                    <p>${event.error.message}</p>
+                    <button onclick="location.reload()" style="padding: 10px 20px; margin-top: 20px;">
+                        Recarregar
+                    </button>
+                </div>
+            `;
+        });
+    </script>
 </body>
-<script src="./script.js"></script>
+
 </html>
